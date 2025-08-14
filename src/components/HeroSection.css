@@ -1,0 +1,114 @@
+.hero {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 40px 20%;
+  background-color: #b4f8c8;  
+  min-height: 100vh;  
+  box-sizing: border-box;
+}
+
+.hero-left {
+  flex: 1;
+  min-width: 280px;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hero-logo {
+  width: 160px;
+  margin-bottom: 20px;
+}
+
+.hero-left h1 {
+  font-family: "Merriweather", serif;
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+.hero-subtext {
+  font-size: 1.1rem;
+  color: #222;
+  margin-bottom: 30px;
+  max-width: 450px;
+}
+
+.hero-btn {
+  background-color: white;
+  color: black;
+  padding: 12px 24px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.2s ease;
+  width: fit-content;
+}
+
+.hero-btn:hover {
+  background-color: #f2f2f2;
+}
+
+.hero-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;  
+  position: relative;
+  min-width: 300px;
+}
+
+.hero-shape-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-shape {
+  width: 100%;
+  max-width: 400px;
+}
+
+.hero-woman {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 90%;
+  max-width: 350px;
+}
+
+ 
+@media (max-width: 1024px) {
+  .hero-left h1 {
+    font-size: 2.5rem;
+  }
+  .hero-subtext {
+    font-size: 1rem;
+  }
+}
+
+ 
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+  }
+  .hero-left {
+    max-width: 100%;
+    align-items: center;
+  }
+  .hero-right {
+    display: none;  
+  }
+  .hero-btn {
+    margin: 0 auto;
+  }
+}

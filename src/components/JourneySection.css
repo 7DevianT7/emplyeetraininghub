@@ -1,0 +1,86 @@
+.journey {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  background-color: #C3F2B5;  
+  padding: 70px 20%;
+  box-sizing: border-box;
+  /*min-height: 80vh;*/
+}
+
+.journey-left {
+  flex: 1;
+  min-width: 280px;
+}
+
+.journey-left h2 {
+  font-family: "Merriweather", serif;
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.journey-right {
+  flex: 2;
+  min-width: 280px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.journey-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+}
+
+.icon-wrapper {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+}
+
+.circle-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.arrow-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 18px;
+  height: 18px;
+}
+
+.journey-text h3 {
+  font-family: "Merriweather", serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.journey-text p {
+  font-size: 0.95rem;
+  color: #333;
+  max-width: 500px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .journey {
+    flex-direction: column;
+    gap: 30px;
+  }
+  .journey-left h2 {
+    font-size: 2.2rem;
+    text-align: center;
+  }
+  .journey-right {
+    gap: 25px;
+  }
+}

@@ -1,0 +1,81 @@
+.overview-section {
+  background-color: #7da2ff; /* plava pozadina glavnog diva */
+  padding: 60px 20px;
+}
+
+.overview-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.overview-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 40px;
+}
+
+.overview-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.overview-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.overview-image-wrapper {
+  position: relative;
+  width: 100%;
+  padding-top: 66%;
+  background-size: cover;
+  background-position: center;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.overview-user {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  max-height: 100%;
+  width: auto;
+}
+
+.overview-module {
+  margin-top: 12px;
+  font-size: 0.9rem;
+  color: black;
+  text-decoration: underline;
+}
+
+.overview-heading {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: white;
+}
+
+/* 📱 Responsive */
+@media (max-width: 1024px) {
+  .overview-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .overview-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .overview-title {
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  .overview-heading {
+    font-size: 1rem;
+  }
+}

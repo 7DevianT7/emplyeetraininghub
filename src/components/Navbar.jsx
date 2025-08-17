@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Navbar.css";
-import logo from "../assets/logo.png"; // ✅ ubaci svoj logo ovde
+import logo from "../assets/logo.png"; 
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);

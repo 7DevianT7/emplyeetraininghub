@@ -58,7 +58,7 @@
   color: white;
 }
 
-/* 📱 Responsive */
+/*  Responsive */
 @media (max-width: 1024px) {
   .overview-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -77,5 +77,15 @@
 
   .overview-heading {
     font-size: 1rem;
+  }
+
+  .overview-card {
+    align-items: center;
+    text-align: center;
+  }
+
+  .overview-user {
+    left: 50% !important;
+    transform: translateX(-50%) !important;
   }
 }

@@ -1,0 +1,978 @@
+
+── src/
+│   ├── assets/ *tu su slike              
+│   ├── components/
+│   │   ├── HeroSection.jsx
+│   │   ├── OverviewSection.jsx
+│   │   ├── LastSection.jsx
+│   │   ├── JourneySection.jsx
+│   │   ├── ResourcesSection.jsx
+│   │   ├── FAQSection.jsx
+│   │
+│   │   ├── HeroSection.css
+│   │   ├── OverviewSection.css
+│   │   ├── LastSection.css
+│   │   ├── JourneySection.css
+│   │   ├── ResourcesSection.css
+│   │   ├── FAQSection.css
+
+
+
+/**************************app.jsx**************************/
+import React from "react";
+import HeroSection from "./components/HeroSection";
+import OverviewSection from "./components/OverviewSection";
+import JourneySection from "./components/JourneySection";
+import ResourcesSection from "./components/ResourcesSection";
+import FAQSection from "./components/FAQSection";
+import LastSection from "./components/LastSection";
+import "./App.css";
+
+const App = () => {
+  return (
+    <div className="app">
+      <HeroSection />
+      <OverviewSection />
+      <JourneySection />
+      <ResourcesSection />
+      <FAQSection />
+      <LastSection />
+    </div>
+  );
+};
+
+export default App;
+
+/**************************************************************/
+/**************************app.css**************************/
+
+.app {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+/**************************************************************/
+/**************************FAQSection.css**************************/
+
+.faq-section {
+  background-color: #C3F2B5;
+  padding: 60px 5%;
+  box-sizing: border-box;
+}
+
+.faq-title {
+  font-family: "Merriweather", serif;
+  font-size: 4.5rem;
+  font-weight: 700;
+  margin-bottom: 40px;
+}
+
+.faq-grid {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+.faq-card {
+  background-color: #C3F2B5;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  border-radius: 15px;
+  width: 280px;
+  height: 360px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Zona 1 - Ikonica */
+.faq-icon-wrapper {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 15px;
+  position: relative;
+  flex-shrink: 0;  
+}
+
+.faq-icon-wrapper a {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.faq-circle {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.faq-arrow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 18px;
+  height: 18px;
+}
+
+/* Zona 2 - Naslov */
+.faq-title-wrapper {
+  min-height: 50px;  
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 105px;
+}
+
+.faq-title-wrapper h3 {
+  font-family: "Merriweather", serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+/* Zona 3 - Tekst */
+.faq-text-wrapper {
+  flex-grow: 1;  
+  display: flex;
+  align-items: flex-start;
+}
+
+.faq-text-wrapper p {
+  font-size: 0.95rem;
+  color: #000;
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .faq-title {
+    text-align: center;
+    font-size: 2rem;
+  }
+  .faq-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/**************************************************************/
+/**************************FAQSection.jsx**************************/
+import React from "react";
+import "./FAQSection.css";
+
+import arrowIcon from "../assets/arrow.png";
+import circleBg from "../assets/circle-bg.png";
+
+const faqs = [
+  {
+    question: "How long is the program?",
+    answer:
+      "Having an FAQ section is a great way to present information about your training program. Using the question-and-answer format makes it more relatable for users.",
+  },
+  {
+    question: "Who is eligible?",
+    answer:
+      "Having an FAQ section is a great way to present information about your training program. Using the question-and-answer format makes it more relatable for users.",
+  },
+  {
+    question: "What if I miss a scheduled training session?",
+    answer:
+      "Having an FAQ section is a great way to present information about your training program. Using the question-and-answer format makes it more relatable for users.",
+  },
+];
+
+const FAQSection = () => {
+  return (
+    <section className="faq-section">
+      <h2 className="faq-title">FAQs</h2>
+      <div className="faq-grid">
+        {faqs.map((faq, i) => (
+          <div key={i} className="faq-card">
+            <div className="faq-icon-wrapper">
+              <a
+                href="https://www.google.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  src={circleBg}
+                  alt="Circle background"
+                  className="faq-circle"
+                />
+                <img src={arrowIcon} alt="Arrow" className="faq-arrow" />
+              </a>
+            </div>
+            <div className="faq-title-wrapper">
+              <h3>{faq.question}</h3>
+            </div>
+            <div className="faq-text-wrapper">
+              <p>{faq.answer}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+};
+
+export default FAQSection;
+/**************************************************************/
+/**************************HeroSection.css**************************/
+.hero {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 40px 20%;
+  background-color: #b4f8c8;  
+  min-height: 100vh;  
+  box-sizing: border-box;
+}
+
+.hero-left {
+  flex: 1;
+  min-width: 280px;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hero-logo {
+  width: 160px;
+  margin-bottom: 20px;
+}
+
+.hero-left h1 {
+  font-family: "Merriweather", serif;
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+.hero-subtext {
+  font-size: 1.1rem;
+  color: #222;
+  margin-bottom: 30px;
+  max-width: 450px;
+}
+
+.hero-btn {
+  background-color: white;
+  color: black;
+  padding: 12px 24px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.2s ease;
+  width: fit-content;
+}
+
+.hero-btn:hover {
+  background-color: #f2f2f2;
+}
+
+.hero-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;  
+  position: relative;
+  min-width: 300px;
+}
+
+.hero-shape-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-shape {
+  width: 100%;
+  max-width: 400px;
+}
+
+.hero-woman {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 90%;
+  max-width: 350px;
+}
+
+ 
+@media (max-width: 1024px) {
+  .hero-left h1 {
+    font-size: 2.5rem;
+  }
+  .hero-subtext {
+    font-size: 1rem;
+  }
+}
+
+ 
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+  }
+  .hero-left {
+    max-width: 100%;
+    align-items: center;
+  }
+  .hero-right {
+    display: none;  
+  }
+  .hero-btn {
+    margin: 0 auto;
+  }
+}
+
+/**************************************************************/
+/**************************HeroSection.jsx**************************/
+import React from "react";
+import "./HeroSection.css";
+import logo from "../assets/logo.png"; 
+import woman from "../assets/woman.png";  
+import shape from "../assets/shape.png"; 
+
+const HeroSection = () => {
+  return (
+    <section className="hero">
+      <div className="hero-left">
+        <img src={logo} alt="Tropic Solutions" className="hero-logo" />
+        <h1>
+          Employee <br /> Training Hub
+        </h1>
+        <p className="hero-subtext">
+          Elevating tech talents into visionary leaders through innovative
+          training and real-world experience.
+        </p>
+        <button className="hero-btn">Start Learning</button>
+      </div>
+
+      <div className="hero-right">
+        <div className="hero-shape-wrapper">
+          <img src={shape} alt="Background Shape" className="hero-shape" />
+          <img src={woman} alt="Woman" className="hero-woman" />
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default HeroSection;
+/**************************************************************/
+/**************************JourneySection.css**************************/
+.journey {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  background-color: #C3F2B5;  
+  padding: 70px 20%;
+  box-sizing: border-box;
+  /*min-height: 80vh;*/
+}
+
+.journey-left {
+  flex: 1;
+  min-width: 280px;
+}
+
+.journey-left h2 {
+  font-family: "Merriweather", serif;
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.journey-right {
+  flex: 2;
+  min-width: 280px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.journey-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+}
+
+.icon-wrapper {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+}
+
+.circle-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.arrow-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 18px;
+  height: 18px;
+}
+
+.journey-text h3 {
+  font-family: "Merriweather", serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.journey-text p {
+  font-size: 0.95rem;
+  color: #333;
+  max-width: 500px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .journey {
+    flex-direction: column;
+    gap: 30px;
+  }
+  .journey-left h2 {
+    font-size: 2.2rem;
+    text-align: center;
+  }
+  .journey-right {
+    gap: 25px;
+  }
+}
+/**************************************************************/
+/**************************JourneySection.jsx**************************/
+import React from "react";
+import "./JourneySection.css";
+import arrowIcon from "../assets/arrow.png"; 
+import circleBg from "../assets/circle-bg.png";  
+
+const steps = [
+  {
+    title: "Self-paced materials",
+    text: "Use this space to talk about your organization’s training program. What makes it relevant and effective? Add that here.",
+  },
+  {
+    title: "Scheduled group workshops and 1-on-1 mentorship",
+    text: "Use this space to talk about your organization’s training program. What makes it relevant and effective? Add that here.",
+  },
+  {
+    title: "On-the-job application",
+    text: "Use this space to talk about your organization’s training program. What makes it relevant and effective? Add that here.",
+  },
+];
+
+const JourneySection = () => {
+  return (
+    <section className="journey">
+      <div className="journey-left">
+        <h2>How your<br />training journey<br />looks like</h2>
+      </div>
+      <div className="journey-right">
+        {steps.map((step, i) => (
+          <div key={i} className="journey-item">
+            <div className="icon-wrapper">
+              <img src={circleBg} alt="Background" className="circle-bg" />
+              <img src={arrowIcon} alt="Arrow" className="arrow-icon" />
+            </div>
+            <div className="journey-text">
+              <h3>{step.title}</h3>
+              <p>{step.text}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+};
+
+export default JourneySection;
+
+/**************************************************************/
+/**************************LastSection.css**************************/
+.last-section {
+  display: flex;
+  background-color: #7ca3ff;  
+  /*padding: 80px 5%;*/
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+/* Leva strana */
+.last-section-left {
+  flex: 1;
+  position: relative;
+  min-width: 300px;
+}
+
+.last-section-bg {
+  /*width: 100%;*/
+  height: auto;
+}
+
+.last-section-user {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 110%;  
+  padding-bottom: 1.4%;
+  height: auto;
+}
+
+/* Desna strana */
+.last-section-right {
+  flex: 2;
+  min-width: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.title-wrapper h2 {
+  font-family: "Merriweather", serif;
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 20px;
+}
+
+.text-wrapper p {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 20px;
+}
+
+.email-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.email-btn {
+  display: inline-block;
+  background: white;
+  color: black;
+  font-size: 1rem;
+  padding: 10px 20px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 500;
+  margin-bottom: 20px;
+  transition: background 0.3s ease;
+}
+
+.email-btn:hover {
+  background: #f2f2f2;
+}
+
+.last-section-logo {
+  width: 160px;
+  height: auto;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .last-section {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .last-section-left {
+    order: -1;
+  }
+
+  .last-section-user {
+    position: relative;
+    transform: none;
+    left: 0;
+  }
+
+  .email-wrapper {
+    align-items: center;
+  }
+}
+
+/**************************************************************/
+/**************************LastSection.jsx**************************/
+import React from "react";
+import "./LastSection.css";
+import romb4 from "../assets/romb4.png";
+import user4 from "../assets/user4.png";
+import logo from "../assets/logo.png";
+
+const LastSection = () => {
+  return (
+    <section className="last-section">
+      {/* Leva trećina */}
+      <div className="last-section-left">
+        <img src={romb4} alt="Background Shape" className="last-section-bg" />
+        <img src={user4} alt="Person" className="last-section-user" />
+      </div>
+
+      {/* Desne dve trećine */}
+      <div className="last-section-right">
+        <div className="title-wrapper">
+          <h2>We can’t wait to see you grow!</h2>
+        </div>
+        <div className="text-wrapper">
+          <p>For any questions about the program, please reach out to</p>
+        </div>
+        <div className="email-wrapper">
+          <a href="mailto:hello@tropic.com" className="email-btn">
+            hello@tropic.com
+          </a>
+          <img src={logo} alt="Tropic Solutions" className="last-section-logo" />
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default LastSection;
+
+/**************************************************************/
+/**************************OverviewSection.css**************************/
+.overview-section {
+  background-color: #7da2ff; /* plava pozadina glavnog diva */
+  padding: 60px 20px;
+}
+
+.overview-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.overview-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 40px;
+}
+
+.overview-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.overview-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.overview-image-wrapper {
+  position: relative;
+  width: 100%;
+  padding-top: 66%;
+  background-size: cover;
+  background-position: center;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.overview-user {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  max-height: 100%;
+  width: auto;
+}
+
+.overview-module {
+  margin-top: 12px;
+  font-size: 0.9rem;
+  color: black;
+  text-decoration: underline;
+}
+
+.overview-heading {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: white;
+}
+
+/* 📱 Responsive */
+@media (max-width: 1024px) {
+  .overview-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .overview-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .overview-title {
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  .overview-heading {
+    font-size: 1rem;
+  }
+}
+
+/**************************************************************/
+/**************************OverviewSection.jsx**************************/
+ 
+import overviewUser1 from "../assets/overviewUser1.png";
+import overviewUser2 from "../assets/overviewUser2.png";
+import overviewUser3 from "../assets/overviewUser3.png";
+import overviewUser4 from "../assets/overviewUser4.png";
+import overviewUser5 from "../assets/overviewUser5.png";
+import overviewUser6 from "../assets/overviewUser6.png";
+
+ 
+import overviewBg1 from "../assets/overviewBg1.png";
+import overviewBg2 from "../assets/overviewBg2.png";
+import overviewBg3 from "../assets/overviewBg3.png";
+import overviewBg4 from "../assets/overviewBg4.png";
+import overviewBg5 from "../assets/overviewBg5.png";
+import overviewBg6 from "../assets/overviewBg6.png";
+
+import "./OverviewSection.css";
+
+const OverviewSection = () => {
+  const cards = [
+    {
+      module: "MODULE 1",
+      title: "Taking charge of your own growth",
+      img: overviewUser1,
+      bg: overviewBg1,
+    },
+    {
+      module: "MODULE 2",
+      title: "Building trust with your team",
+      img: overviewUser2,
+      bg: overviewBg2,
+    },
+    {
+      module: "MODULE 3",
+      title: "Giving and receiving feedback",
+      img: overviewUser3,
+      bg: overviewBg3,
+    },
+    {
+      module: "MODULE 4",
+      title: "Growing your impact",
+      img: overviewUser4,
+      bg: overviewBg4,
+    },
+    {
+      module: "MODULE 5",
+      title: "Empowering others",
+      img: overviewUser5,
+      bg: overviewBg5,
+    },
+    {
+      module: "MODULE 6",
+      title: "Sustainable leadership",
+      img: overviewUser6,
+      bg: overviewBg6,
+    },
+  ];
+
+  return (
+    <section className="overview-section">
+      <div className="overview-container">
+        <h2 className="overview-title">Training hub overview</h2>
+        <div className="overview-grid">
+          {cards.map((card, index) => (
+            <div key={index} className="overview-card">
+              <div
+                className="overview-image-wrapper"
+                style={{ backgroundImage: `url(${card.bg})` }}
+              >
+                <img src={card.img} alt={card.title} className="overview-user" />
+              </div>
+              <p className="overview-module">{card.module}</p>
+              <h3 className="overview-heading">{card.title}</h3>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default OverviewSection;
+
+/**************************************************************/
+/**************************ResourcesSection.css**************************/
+.overview-section {
+  background-color: #7da2ff;  
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.overview-title {
+  font-size: 2.5rem;
+  color: white;
+  margin-bottom: 40px;
+}
+
+.overview-cards {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.overview-card {
+  width: 280px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.image-container {
+  width: 100%;
+  height: 200px;
+  border-radius: 15px;
+  position: relative;
+  overflow: hidden;
+}
+
+.bg-shape {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 77%;
+  height: auto;
+  z-index: 1;
+}
+
+.person-image {
+  position: relative;
+  z-index: 2;
+  max-height: 100%;
+  max-width: 100%;
+}
+
+.card-title {
+  font-size: 1.2rem;
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+.card-description {
+  font-size: 0.9rem;
+  color: #555;
+  margin: 10px 0 20px;
+}
+
+.read-more {
+  padding: 8px 16px;
+  border-radius: 20px;
+  background-color: white;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  color: black;
+}
+
+.read-more:hover {
+  background-color: #f0f0f0;
+}
+
+/**************************************************************/
+/**************************ResourcesSection.jsx**************************/
+import React from "react";
+import "./ResourcesSection.css";
+
+ 
+import user1 from "../assets/user1.png";
+import user2 from "../assets/user2.png";
+import user3 from "../assets/user3.png";
+import romb1 from "../assets/romb1.png";
+import romb2 from "../assets/romb2.png";
+import romb3 from "../assets/romb3.png";
+
+const ResourcesSection = () => {
+  const cards = [
+    {
+      title: "Essentials handbook",
+      description: "Give your audience a short description of this resource.",
+      personImg: user1,
+      bgColor: "#CDE5FF",
+      bgShape: romb1,
+    },
+    {
+      title: "Training journal",
+      description: "Give your audience a short description of this resource.",
+      personImg: user2,
+      bgColor: "#B9F2B3",
+      bgShape: romb2,
+    },
+    {
+      title: "Modules",
+      description: "Give your audience a short description of this resource.",
+      personImg: user3,
+      bgColor: "#A7B7FF",
+      bgShape: romb3,
+    },
+  ];
+
+  return (
+    <div className="overview-section">
+      <h2 className="overview-title">Training resources</h2>
+      <div className="overview-cards">
+        {cards.map((card, index) => (
+          <div key={index} className="overview-card">
+            {/* Gornji dio sa rombom i slikom osobe */}
+            <div
+              className="image-container"
+              style={{ backgroundColor: card.bgColor }}
+            >
+              {card.bgShape && (
+                <img
+                  src={card.bgShape}
+                  alt="Background shape"
+                  className="bg-shape"
+                />
+              )}
+              <img
+                src={card.personImg}
+                alt={card.title}
+                className="person-image"
+              />
+            </div>
+
+            {/* Tekst i dugme ispod slike */}
+            <h3 className="card-title">{card.title}</h3>
+            <p className="card-description">{card.description}</p>
+            <button className="read-more">READ MORE</button>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default ResourcesSection;

@@ -82,6 +82,34 @@
 }
 
 /* Responsive */
+@media (max-width: 1160px) {
+    .last-section {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .last-section-left {
+    order: -1;
+  }
+
+  .last-section-user {
+    position: relative;
+    transform: none;
+    left: 0;
+  }
+
+  .email-wrapper {
+    align-items: center;
+  }
+
+
+.last-section-bg {
+  display: none;
+
+}
+}
+
+
 @media (max-width: 768px) {
   .last-section {
     flex-direction: column;
@@ -101,4 +129,11 @@
   .email-wrapper {
     align-items: center;
   }
+
+
+.last-section-bg {
+  display: none;
+
+}
+
 }

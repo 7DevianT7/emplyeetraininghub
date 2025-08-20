@@ -56,13 +56,27 @@
 }
 
 .hero-right {
-  flex: 1;
+  flex: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
   min-width: 300px;
 }
+.hero-left h1 span {
+  display: inline-block;
+}
+
+.hero-shape {
+  z-index: 1;
+  position: relative;
+}
+
+.hero-woman {
+  z-index: 2;
+  position: absolute;
+}
+
 
 .hero-shape-wrapper {
   position: relative;

@@ -1,12 +1,11 @@
 .journey {
-  display: flex;
+  /*display: flex;*/
   flex-wrap: wrap;
   align-items: flex-start;
   justify-content: space-between;
-  background-color: #C3F2B5;  
+  background-color: #c3f2b5;
   padding: 70px 20%;
   box-sizing: border-box;
-  /*min-height: 80vh;*/
 }
 
 .journey-left {
@@ -19,6 +18,7 @@
   font-size: 3rem;
   font-weight: 700;
   line-height: 1.2;
+  color: #0d1b39;
 }
 
 .journey-right {
@@ -32,13 +32,22 @@
 .journey-item {
   display: flex;
   align-items: flex-start;
-  gap: 15px;
+  gap: 18px;
+  padding: 18px 22px;
+  border-radius: 16px;
+  background: #fff;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.journey-item:hover {
+  background: #f9fff6; /* lagani ton */
 }
 
 .icon-wrapper {
   position: relative;
-  width: 40px;
-  height: 40px;
+  width: 48px;
+  height: 48px;
   flex-shrink: 0;
 }
 
@@ -46,6 +55,7 @@
   width: 100%;
   height: 100%;
   object-fit: contain;
+  animation: pulse 4s ease-in-out infinite;
 }
 
 .arrow-icon {
@@ -53,21 +63,57 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
 }
 
 .journey-text h3 {
   font-family: "Merriweather", serif;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   font-weight: 700;
-  margin-bottom: 5px;
+  margin-bottom: 6px;
+  position: relative;
+  display: inline-block;
+}
+
+.journey-text h3::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0%;
+  height: 2px;
+  background: #0d1b39;
+  transition: width 0.3s ease;
+}
+
+.journey-item:hover .journey-text h3::after {
+  width: 100%;
 }
 
 .journey-text p {
-  font-size: 0.95rem;
-  color: #333;
+  font-size: 1rem;
+  color: #555;
   max-width: 500px;
+  transition: color 0.3s ease;
+}
+
+.journey-item:hover .journey-text p {
+  color: #222;
+}
+.journey-heading {
+  font-family: "Merriweather", serif;
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #0d1b39;
+}
+
+
+/* pulse animacija za bg */
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 0.9; }
+  50% { transform: scale(1.05); opacity: 1; }
 }
 
 /* Responsive */
@@ -75,6 +121,7 @@
   .journey {
     flex-direction: column;
     gap: 30px;
+    padding: 50px 10%;
   }
   .journey-left h2 {
     font-size: 2.2rem;
@@ -82,5 +129,13 @@
   }
   .journey-right {
     gap: 25px;
+  }
+  .journey-item {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .icon-wrapper {
+    margin-bottom: 10px;
   }
 }

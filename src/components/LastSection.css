@@ -1,10 +1,12 @@
 .last-section {
   display: flex;
-  background-color: #7ca3ff;  
-  /*padding: 80px 5%;*/
   align-items: center;
   gap: 40px;
   flex-wrap: wrap;
+  padding: 80px 5%;
+  position: relative;
+  background: linear-gradient(135deg, #7ca3ff, #a17fff);
+  overflow: hidden;
 }
 
 /* Leva strana */
@@ -15,17 +17,19 @@
 }
 
 .last-section-bg {
-  /*width: 100%;*/
+  width: 100%;
+  max-width: 350px;
   height: auto;
+   left: -10%;
+  
 }
 
 .last-section-user {
   position: absolute;
   bottom: 0;
-  left: 50%;
+  left: -10%;
   transform: translateX(-50%);
-  max-width: 110%;  
-  padding-bottom: 1.4%;
+  max-width: 120%;
   height: auto;
 }
 
@@ -36,6 +40,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  z-index: 2;
 }
 
 .title-wrapper h2 {
@@ -48,7 +53,7 @@
 
 .text-wrapper p {
   font-size: 1.2rem;
-  font-weight: 600;
+  font-weight: 500;
   color: white;
   margin-bottom: 20px;
 }
@@ -57,23 +62,26 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  gap: 20px;
 }
 
+/* Glassmorphism dugme */
 .email-btn {
   display: inline-block;
-  background: white;
-  color: black;
-  font-size: 1rem;
-  padding: 10px 20px;
+  padding: 12px 28px;
   border-radius: 30px;
   text-decoration: none;
-  font-weight: 500;
-  margin-bottom: 20px;
-  transition: background 0.3s ease;
+  font-weight: 600;
+  font-size: 1rem;
+  color: white;
+  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
 }
 
 .email-btn:hover {
-  background: #f2f2f2;
+  background: rgba(255, 255, 255, 0.25);
 }
 
 .last-section-logo {
@@ -83,34 +91,6 @@
 
 /* Responsive */
 @media (max-width: 1160px) {
-    .last-section {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .last-section-left {
-    order: -1;
-  }
-
-  .last-section-user {
-    position: relative;
-    transform: none;
-    left: 0;
-  }
-
-  .email-wrapper {
-    align-items: center;
-  }
-
-
-.last-section-bg {
-  display: none;
-
-}
-}
-
-
-@media (max-width: 768px) {
   .last-section {
     flex-direction: column;
     text-align: center;
@@ -130,10 +110,19 @@
     align-items: center;
   }
 
-
-.last-section-bg {
-  display: none;
-
+  .last-section-bg {
+    display: none;
+  }
 }
 
+@media (max-width: 768px) {
+  .title-wrapper h2 {
+    font-size: 2.2rem;
+  }
+  .text-wrapper p {
+    font-size: 1rem;
+  }
+  .last-section-logo {
+    width: 120px;
+  }
 }

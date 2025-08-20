@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import { motion } from "framer-motion";
 import "./FAQSection.css";
 
 import arrowIcon from "../assets/arrow.png";
@@ -8,48 +9,104 @@ const faqs = [
   {
     question: "How long is the program?",
     answer:
-      "Having an FAQ section is a great way to present information about your training program. Using the question-and-answer format makes it more relatable for users.",
+      "The program typically lasts 6 weeks, with each week focused on a different leadership skill."
   },
   {
     question: "Who is eligible?",
     answer:
-      "Having an FAQ section is a great way to present information about your training program. Using the question-and-answer format makes it more relatable for users.",
+      "The program is open to tech professionals who are eager to grow their leadership skills."
   },
   {
     question: "What if I miss a scheduled training session?",
     answer:
-      "Having an FAQ section is a great way to present information about your training program. Using the question-and-answer format makes it more relatable for users.",
-  },
+      "All sessions are recorded and you’ll have access to catch up at your own pace."
+  }
 ];
 
 const FAQSection = () => {
+  const [activeIndex, setActiveIndex] = useState(null);
+  const titleText = "FAQs";
+
+  const toggleFAQ = (index) => {
+    setActiveIndex(activeIndex === index ? null : index);
+  };
+
   return (
     <section className="faq-section">
-      <h2 className="faq-title">FAQs</h2>
+      {/* Naslov slovo po slovo */}
+      <motion.h2
+        className="faq-title"
+        initial="hidden"
+        animate="visible"
+        variants={{
+          hidden: {},
+          visible: {
+            transition: { staggerChildren: 0.1 }
+          }
+        }}
+      >
+        {titleText.split("").map((char, i) => (
+          <motion.span
+            key={i}
+            variants={{
+              hidden: { opacity: 0, y: 20 },
+              visible: { opacity: 1, y: 0 }
+            }}
+            transition={{ duration: 0.4 }}
+            style={{ display: "inline-block" }}
+          >
+            {char}
+          </motion.span>
+        ))}
+      </motion.h2>
+
+      {/* Kartice */}
       <div className="faq-grid">
         {faqs.map((faq, i) => (
-          <div key={i} className="faq-card">
-            <div className="faq-icon-wrapper">
-              <a
-                href="https://www.google.com"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img
+          <motion.div
+            key={i}
+            className="faq-card"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: i * 0.2 }}
+            viewport={{ once: true }}
+            onClick={() => toggleFAQ(i)}
+          >
+            <div className="faq-header">
+              <div className="faq-icon-wrapper">
+                <motion.img
                   src={circleBg}
                   alt="Circle background"
                   className="faq-circle"
+                  animate={{ rotate: activeIndex === i ? 360 : 0 }}
+                  transition={{ duration: 0.6 }}
                 />
-                <img src={arrowIcon} alt="Arrow" className="faq-arrow" />
-              </a>
-            </div>
-            <div className="faq-title-wrapper">
+                <motion.img
+                  src={arrowIcon}
+                  alt="Arrow"
+                  className="faq-arrow"
+                  animate={{
+                    x: activeIndex === i ? 5 : 0
+                  }}
+                  transition={{ duration: 0.3, repeat: Infinity, repeatType: "reverse" }}
+                />
+              </div>
               <h3>{faq.question}</h3>
             </div>
-            <div className="faq-text-wrapper">
+
+            <motion.div
+              className="faq-answer"
+              initial={{ height: 0, opacity: 0 }}
+              animate={
+                activeIndex === i
+                  ? { height: "auto", opacity: 1 }
+                  : { height: 0, opacity: 0 }
+              }
+              transition={{ duration: 0.4 }}
+            >
               <p>{faq.answer}</p>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         ))}
       </div>
     </section>

@@ -1,7 +1,8 @@
 import React from "react";
+import { motion } from "framer-motion";
 import "./JourneySection.css";
-import arrowIcon from "../assets/arrow.png"; 
-import circleBg from "../assets/circle-bg.png";  
+import arrowIcon from "../assets/arrow.png";
+import circleBg from "../assets/circle-bg.png";
 
 const steps = [
   {
@@ -19,23 +20,51 @@ const steps = [
 ];
 
 const JourneySection = () => {
+  const headingText = "How your training journey looks like";
+
   return (
     <section className="journey">
       <div className="journey-left">
-        <h2>How your<br />training journey<br />looks like</h2>
+        <h2 className="journey-heading">
+          {headingText.split("").map((char, index) => (
+            <motion.span
+              key={index}
+              whileHover={{ scale: 1.3, color: "#007bff" }}
+              transition={{ type: "spring", stiffness: 300 }}
+              style={{ display: "inline-block" }}
+            >
+              {char === " " ? "\u00A0" : char}
+            </motion.span>
+          ))}
+        </h2>
       </div>
+
       <div className="journey-right">
         {steps.map((step, i) => (
-          <div key={i} className="journey-item">
+          <motion.div
+            key={i}
+            className="journey-item"
+            whileHover={{
+              scale: 1.03,
+              boxShadow: "0px 12px 28px rgba(0,0,0,0.15)",
+            }}
+            transition={{ type: "spring", stiffness: 200, damping: 18 }}
+          >
             <div className="icon-wrapper">
               <img src={circleBg} alt="Background" className="circle-bg" />
-              <img src={arrowIcon} alt="Arrow" className="arrow-icon" />
+              <motion.img
+                src={arrowIcon}
+                alt="Arrow"
+                className="arrow-icon"
+                whileHover={{ rotate: 12, scale: 1.1 }}
+                transition={{ type: "spring", stiffness: 200 }}
+              />
             </div>
             <div className="journey-text">
               <h3>{step.title}</h3>
               <p>{step.text}</p>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
     </section>

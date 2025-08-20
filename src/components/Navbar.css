@@ -68,9 +68,18 @@
   transform: rotate(-45deg) translate(5px, -5px);
 }
 
- 
 
- 
+@keyframes spinZ {
+  0% { transform: rotateZ(0deg); }
+  100% { transform: rotateZ(360deg); }
+}
+
+.navbar-logo img {
+  height: 50px;
+  width: auto;
+  animation: spinZ 6s linear infinite;
+}
+
 @media (max-width: 1199px) {
   .navbar-links {
     gap: 18px;

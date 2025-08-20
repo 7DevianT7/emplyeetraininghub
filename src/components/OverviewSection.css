@@ -1,6 +1,7 @@
+/* SECTION WRAPPER */
 .overview-section {
-  background-color: #7da2ff; 
-  padding: 60px 20px;
+  background: #7da2ff;
+  padding: 64px 20px;
 }
 
 .overview-container {
@@ -9,83 +10,175 @@
 }
 
 .overview-title {
-  font-size: 2.5rem;
-  font-weight: bold;
-  color: white;
-  margin-bottom: 40px;
+  font-size: clamp(28px, 3vw, 40px);
+  color: #fff;
+  text-align: center;
+  margin-bottom: 36px;
+  font-weight: 800;
+  letter-spacing: 0.2px;
 }
 
+/* GRID (predlog 5 – responsive) */
 .overview-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
 }
 
-.overview-card {
-  display: flex;
-  flex-direction: column;
-}
-
-.overview-image-wrapper {
-  position: relative;
-  width: 100%;
-  padding-top: 66%;
-  background-size: cover;
-  background-position: center;
-  border-radius: 12px;
-  overflow: hidden;
-}
-
-.overview-user {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  max-height: 100%;
-  width: auto;
-}
-
-.overview-module {
-  margin-top: 12px;
-  font-size: 0.9rem;
-  color: black;
-  text-decoration: underline;
-}
-
-.overview-heading {
-  font-size: 1.1rem;
-  font-weight: bold;
-  color: white;
-}
-
-/*  Responsive */
 @media (max-width: 1024px) {
   .overview-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .overview-grid {
     grid-template-columns: 1fr;
   }
+}
 
-  .overview-title {
-    font-size: 2rem;
-    text-align: center;
+/* CARD */
+.overview-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 14px;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  transform: translateZ(0);
+  transition: box-shadow 220ms ease, transform 220ms ease;
+  cursor: pointer;
+}
+
+.overview-card:hover {
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.14);
+}
+
+/* IMAGE WRAPPER */
+.overview-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  border-radius: 14px;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.04);
+  isolation: isolate; /* da slojevi rade kako treba */
+}
+
+/* BG SHAPE – puls + lagana rotacija (predlog 4) */
+.bg-shape {
+  position: absolute;
+  inset: 0;
+  background-repeat: no-repeat;
+  background-size: 75% auto;
+  background-position: center;
+  filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.15));
+  animation: pulseScale 5.5s ease-in-out infinite, slowRotate 24s linear infinite;
+  z-index: 1;
+  transition: transform 300ms ease;
+}
+
+/* USER IMG – parallax feel na hover (predlog 2 dopuna) */
+.overview-user {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  max-width: 88%;
+  max-height: 88%;
+  object-fit: contain;
+  z-index: 2;
+  transition: transform 300ms ease;
+}
+
+.overview-card:hover .overview-user {
+  transform: translateY(-4px) scale(1.02);
+}
+
+.overview-card:hover .bg-shape {
+  transform: scale(1.03);
+}
+
+/* MODULE LABEL – dinamični underline (predlog 3) */
+.overview-module {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1.6px;
+  color: #2a3b7a;
+  text-transform: uppercase;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 0% 2px;
+  transition: background-size 220ms ease;
+  padding-bottom: 2px;
+}
+
+.overview-card:hover .overview-module {
+  background-size: 100% 2px;
+}
+
+/* HEADING – letter-spacing animacija (predlog 3) */
+.overview-heading {
+  font-size: 18px;
+  font-weight: 800;
+  color: #0d1b39;
+  line-height: 1.25;
+  transition: letter-spacing 220ms ease, color 220ms ease;
+}
+
+.overview-card:hover .overview-heading {
+  letter-spacing: 0.3px;
+  color: #0b1530;
+}
+
+/* CTA – Read more sa pomjeranjem strelice (predlog 6) */
+.overview-cta {
+  margin-top: 4px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  font-size: 14px;
+  color: #1f2c5d;
+  transition: opacity 200ms ease;
+}
+
+.overview-card:hover .overview-cta .arrow {
+  transform: translateX(4px);
+}
+
+.arrow {
+  display: inline-block;
+  transition: transform 200ms ease;
+}
+
+/* MOBILE TWEAKS (predlog 5) */
+@media (max-width: 768px) {
+  .overview-section {
+    padding: 44px 16px;
   }
-
-  .overview-heading {
-    font-size: 1rem;
-  }
-
   .overview-card {
-    align-items: center;
-    text-align: center;
+    padding: 16px;
   }
+  .overview-image-wrapper {
+    height: 200px;
+  }
+  .overview-heading {
+    font-size: 17px;
+  }
+}
 
-  .overview-user {
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-  }
+/* KEYFRAMES */
+@keyframes pulseScale {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+@keyframes slowRotate {
+  0% { rotate: 0deg; }
+  100% { rotate: 360deg; }
 }
